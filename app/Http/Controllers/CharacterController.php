@@ -11,9 +11,18 @@ class CharacterController extends Controller
 
     public function index()
     {
-       $characters = Character::orderBy('id','asc')->paginate(15);
+       $characters = Character::orderBy('id','asc')->paginate(10);
 
-        return view('characters.index', ['characters' => $characters]);
+       $element_color = [
+           "Electro" => 'violet-500',
+           "Pyro" => 'red-500',
+           "Geo" => 'amber-900',
+           "Cryo" => 'sky-200',
+           "Anemo" => 'emerald-400',
+           "Hydro" => 'blue-600',
+       ];
+
+        return view('characters.index', ['characters' => $characters], ['element_color' => $element_color]);
     }
 
     public function fetchCharacters(): string
@@ -52,6 +61,13 @@ class CharacterController extends Controller
             $character->save();
         }
         return "Finished";
+    }
+
+    public function showInvidualCharacter($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
+        $character = Character::find($id);
+
+        return view('characters.show', ['character' => $character]);
     }
 
 }
