@@ -17,7 +17,7 @@
         <div class="text-green-500 text-lg font-bold text-center p-12 rounded-lg row-span-2"></div>
         <div class="shadow-lg bg-violet-400 text-lg font-bold text-center p-12 rounded-lg row-span-2">
             <h1 class="text-amber-300">So what are you waiting for? Let's explore :)</h1>
-            <a href=""><button class="rounded-full bg-amber-400 hover:bg-amber-600 text-white font-bold py-2 px-4" >Characters</button></a>
+            <a href="{{route('characters')}}"><button class="rounded-full bg-amber-400 hover:bg-amber-600 text-white font-bold py-2 px-4" >Characters</button></a>
             <a href=""> <button class="rounded-full bg-amber-400 hover:bg-amber-600 text-white font-bold py-2 px-4">Enemies</button></a>
         </div>
 
