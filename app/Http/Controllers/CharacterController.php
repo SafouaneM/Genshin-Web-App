@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Http;
 class CharacterController extends Controller
 {
 
+    public function index()
+    {
+       $characters = Character::orderBy('id','asc')->paginate(15);
+
+        return view('characters.index', ['characters' => $characters]);
+    }
+
     public function fetchCharacters(): string
     {
         $response = Http::get('https://api.genshin.dev/characters/all');
