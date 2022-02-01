@@ -28,7 +28,7 @@ class CharacterController extends Controller
 
     public function fetchCharacters(): string
     {
-        //todo actually wanna store characters on aws later =)
+        //todo actually wanna store characters on aws later =) and needs to be with a job and cmd
         $response = Http::get('https://api.genshin.dev/characters/all');
 
         $characters = json_decode($response->body());

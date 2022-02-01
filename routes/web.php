@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Character\CharacterController;
+use App\Http\Controllers\User\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,14 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-
+Route::get('/profile', 'App\Http\Controllers\User\ProfileController@getProfileDetails')->middleware(['auth'])->name('profile');
 
 Route::get('/characters', 'App\Http\Controllers\Character\CharacterController@index')->name('characters');
 Route::get('/characters/{id}', 'App\Http\Controllers\Character\CharacterController@showInvidualCharacter');
 
 //todo auth prefix only admin is able to fetch (i SHOULD 1000000% remove this later on and just keep it as a cmd only)
-Route::get('/fetch', 'App\Http\Controllers\CharacterController@fetchCharacters')->middleware(['auth']);
+Route::get('/fetch', 'App\Http\Controllers\Character\CharacterController@fetchCharacters')->middleware(['auth']);
 
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware(['auth'])->name('profile');
+
 
 require __DIR__.'/auth.php';

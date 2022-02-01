@@ -8,7 +8,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+* @property int                                         $id
+* @property string                                      $username
+* @property string                                      $first_name
+* @property string                                      $email
+* @property string|null                                 $adventure_level
+* @property string|null                                 $profile_picture
+*
+ **/
+
 class User extends Authenticatable
+
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,7 +29,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'first_name',
+        'adventure_level',
+        'profile_picture',
         'email',
         'password',
     ];
@@ -41,4 +55,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function charactersOwned()
+    {
+        return $this->hasMany(Character::class);
+    }
+
 }

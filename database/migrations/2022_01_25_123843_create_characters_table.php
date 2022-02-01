@@ -30,6 +30,8 @@ class CreateCharactersTable extends Migration
             $table->longText('outfits')->nullable();
             $table->string('icon')->nullable();
             $table->string('portrait')->nullable();
+            $table->boolean('is_owned')->nullable()->default(false);
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

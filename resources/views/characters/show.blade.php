@@ -10,7 +10,7 @@
             padding: 12rem;
         }
     </style>
-    {{---todo style single card component and display all information --}}
+    {{---todo style single card component and display all information with the help of accordion component --}}
 
     <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
         <div class="px-4 py-4 bg-violet-300 border-2 border-violet-500 rounded-lg">

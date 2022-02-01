@@ -12,7 +12,7 @@ class fetchCharacters extends Command
      *
      * @var string
      */
-    protected $signature = 'gensh-app fetch-flush';
+    protected $signature = 'gensh-fetch-flush';
 
     /**
      * Create a new command instance.
