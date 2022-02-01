@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Character;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Character;
 use Illuminate\Support\Facades\Http;
+use function view;
 
 class CharacterController extends Controller
 {
@@ -14,12 +15,12 @@ class CharacterController extends Controller
        $characters = Character::orderBy('id','asc')->paginate(10);
 
        $element_color = [
-           "Electro" => 'violet-500',
-           "Pyro" => 'red-500',
-           "Geo" => 'amber-900',
-           "Cryo" => 'sky-200',
-           "Anemo" => 'emerald-400',
-           "Hydro" => 'blue-600',
+           "Electro" => '#8b5cf6',
+           "Pyro" => '#ef4444',
+           "Geo" => '#78350f',
+           "Cryo" => '#bae6fd',
+           "Anemo" => '#059669',
+           "Hydro" => '#2563eb',
        ];
 
         return view('characters.index', ['characters' => $characters], ['element_color' => $element_color]);
@@ -27,6 +28,7 @@ class CharacterController extends Controller
 
     public function fetchCharacters(): string
     {
+        //todo actually wanna store characters on aws later =)
         $response = Http::get('https://api.genshin.dev/characters/all');
 
         $characters = json_decode($response->body());

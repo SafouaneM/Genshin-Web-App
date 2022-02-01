@@ -1,18 +1,23 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
     ],
-  theme: {
-    extend: {
-        backgroundImage: theme => ({
-            'main-bg': "url('/img/Genshin_App_Background.png')"
-        })
+
+    theme: {
+        extend: {
+            //todo check in photoshop rq
+            backgroundImage: theme => ({
+                'main-bg': "url('/img/Genshin_App_Background.png')"
+            }),
+            fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-      variants: {
-          width: ["responsive", "hover", "focus"]
-      }
-  },
-  plugins: [],
-}
+
+    plugins: [require('@tailwindcss/forms')],
+};
