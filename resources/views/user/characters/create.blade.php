@@ -16,13 +16,11 @@
                                 {{---todo temp img now need to implement profile picture ofc.--}}
                                 <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{asset('img/mona.png')}}"
                                      alt="Ico_img"/>
-                                <h3 class="mb-1 text-xl font-medium text-gray-900 ">Username: {{$user->username}}</h3>
-                                <p class="mb-1 text-md font-medium text-gray-900 ">First Name: {{$user->first_name}}</p>
-                                <p class="mb-1 text-md font-medium text-gray-900 ">Email: {{$user->email}}</p>
+                                <h3 class="mb-1 text-xl font-medium text-gray-900 ">Username:</h3>
+                                <p class="mb-1 text-md font-medium text-gray-900 ">First Name: </p>
+                                <p class="mb-1 text-md font-medium text-gray-900 ">Email: </p>
                                 <p class="mb-1 text-md font-medium text-gray-900 ">Adventure
-                                    Rank: {{$user->adventure_rank}}</p>
-
-
+                                    Rank: </p>
                             </div>
 
                         </div>

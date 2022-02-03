@@ -36,9 +36,10 @@ class Character extends Model
         'outfits' => 'json'
     ];
 
-    public function hasUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class)
+        ->withPivot(['is_owned']);
     }
 
 

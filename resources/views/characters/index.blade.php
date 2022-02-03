@@ -13,15 +13,21 @@
     {{---todo grid here---}}
 
     <div class="grid gap-8 space-x-1 lg:grid-cols-5 md:px-10">
-        @foreach($characters as $character)
+        @foreach($characters as $key => $character)
             <div class="mt-12 px-4 py-4 bg-violet-300 border-2 border-violet-400 rounded-lg">
                 <div class="flex flex-col items-center pb-8">
-                    {{---todo temp img now need to fetch icons aswel.--}}
-                    <img class="mb-3 w-24 h-24 rounded-full  shadow-lg" src="{{asset('img/mona.png')}}" alt="Ico_img"/>
+
+                    <p class="hidden">{{$characterIconName = strtolower($character->name)}}</p>
+                    <p class="hidden">{{$icon = "https://api.genshin.dev/characters/$characterIconName/icon"}}</p>
+
+                    <img class="mb-3 w-24 h-24 rounded-full  shadow-lg" src="{{$icon}}" alt="Ico_img"/>
+
+
                     <h3 class="mb-1 text-xl font-medium text-gray-900  dark:text-white">{{$character->name}}</h3>
                     {{---todo I think i can make this cleaner?--}}
 
-                    <span style="color: {{$element_color[$character->vision]}}" class="text-sm font-bold ">{{$character->vision}}</span>
+                    <span style="color: {{$element_color[$character->vision]}}"
+                          class="text-sm font-bold ">{{$character->vision}}</span>
                     <div class="flex mt-4 space-x-3 lg:mt-6">
                         <a href="characters/{{$character->id}}"
                            class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Learn

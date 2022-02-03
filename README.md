@@ -18,7 +18,9 @@ Functionalities:
 
 - [] User can update/remove account (details)
 
-- [] Have a list of all the characters you own and keep track of how many constellations you have
+- [] User can add characters they own to their list  and keep track of how many constellations they have
+
+- [X] Have a list of all the characters you own 
 
 - [] Level resource material required for each ascension for each character
 

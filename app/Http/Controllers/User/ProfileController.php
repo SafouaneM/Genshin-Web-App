@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Character;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -25,6 +26,29 @@ class ProfileController extends Controller
     }
 
     public function removeProfileDetails()
+    {
+
+    }
+
+    public function showCharacterList()
+    {
+        $characters = Character::with('users')->get();
+        return view('user.characters.index', ['characters' => $characters]);
+    }
+
+    public function createNewCharacterToList()
+    {
+
+        
+        return view('user.characters.create');
+    }
+
+    public function storeNewCharacterToList()
+    {
+
+    }
+
+    public function destroy()
     {
 
     }

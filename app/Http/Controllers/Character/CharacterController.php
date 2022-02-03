@@ -12,18 +12,22 @@ class CharacterController extends Controller
 
     public function index()
     {
-       $characters = Character::orderBy('id','asc')->paginate(10);
+        $characters = Character::orderBy('id', 'asc')->paginate(10);
 
-       $element_color = [
-           "Electro" => '#8b5cf6',
-           "Pyro" => '#ef4444',
-           "Geo" => '#78350f',
-           "Cryo" => '#bae6fd',
-           "Anemo" => '#059669',
-           "Hydro" => '#2563eb',
-       ];
+        $element_color = [
+            "Electro" => '#8b5cf6',
+            "Pyro" => '#ef4444',
+            "Geo" => '#78350f',
+            "Cryo" => '#bae6fd',
+            "Anemo" => '#059669',
+            "Hydro" => '#2563eb',
+        ];
 
-        return view('characters.index', ['characters' => $characters], ['element_color' => $element_color]);
+        return view('characters.index',
+            ['characters' => $characters],
+            ['element_color' => $element_color],
+        );
+
     }
 
     public function fetchCharacters(): string
@@ -39,14 +43,15 @@ class CharacterController extends Controller
         foreach ($characters as $c) {
             //TODO This is so ugly man. pls dont forget to change
             $character = new Character;
-
-            $character->name = $c->name;
+            //todo regex for replacing the first names of characters for the icons.
+            $character->name = preg_replace('/\s+/', '-', $c->name);
             $character->vision = $c->vision;
             $character->weapon = $c->weapon;
             $character->nation = $c->nation;
             $character->affiliation = $c->affiliation;
             $character->rarity = $c->rarity;
             $character->constellation = $c->constellation;
+
 
             if (isset($c->birthday)) {
                 $character->birthday = $c->birthday;
@@ -60,6 +65,7 @@ class CharacterController extends Controller
             if (isset($c->outfits)) {
                 $character->outfits = $c->outfits;
             }
+
             $character->save();
         }
         return "Finished";
@@ -71,5 +77,6 @@ class CharacterController extends Controller
 
         return view('characters.show', ['character' => $character]);
     }
+
 
 }
