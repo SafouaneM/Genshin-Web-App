@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Character;
 
-use App\Http\Controllers\Controller;
-use App\Models\Character;
-use Illuminate\Support\Facades\Http;
 use function view;
+use App\Models\Character;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+
 
 class CharacterController extends Controller
 {
@@ -23,9 +24,9 @@ class CharacterController extends Controller
             "Hydro" => '#2563eb',
         ];
 
-        return view('characters.index',
-            ['characters' => $characters],
-            ['element_color' => $element_color],
+
+        return view('characters.index', compact('element_color', 'characters')
+
         );
 
     }
@@ -39,19 +40,23 @@ class CharacterController extends Controller
 
 //        $iconUrl = Http::get('https://api.genshin.dev/characters/$character_name/icon');
 
-
         foreach ($characters as $c) {
+
+            $icon = [];
+            $characterIconName = strtolower(preg_replace('/\s+/', '-', $c->name));
+            $c->icon = "https://api.genshin.dev/characters/$characterIconName/icon";
+
             //TODO This is so ugly man. pls dont forget to change
             $character = new Character;
             //todo regex for replacing the first names of characters for the icons.
-            $character->name = preg_replace('/\s+/', '-', $c->name);
+            $character->name = $c->name;
             $character->vision = $c->vision;
             $character->weapon = $c->weapon;
             $character->nation = $c->nation;
             $character->affiliation = $c->affiliation;
             $character->rarity = $c->rarity;
             $character->constellation = $c->constellation;
-
+            $character->icon = $c->icon;
 
             if (isset($c->birthday)) {
                 $character->birthday = $c->birthday;
@@ -73,9 +78,10 @@ class CharacterController extends Controller
 
     public function showInvidualCharacter($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        $character = Character::find($id);
+        $characters = Character::find($id);
 
-        return view('characters.show', ['character' => $character]);
+
+        return view('characters.show', ['character' => $characters]);
     }
 
 

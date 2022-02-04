@@ -19,9 +19,12 @@
                                     <h1 class="text-2xl bg-fuchsia-700 rounded-full border-violet-500 drop-shadow-lg p-2">
                                         Add a new character to your collection</h1>
                                     {{---todo temp img now need to implement profile picture ofc.--}}
-                                    <img class="mt-6 mb-3 w-24 h-24 rounded-full shadow-lg"
-                                         src="{{asset('img/mona.png')}}"
-                                         alt="Ico_img"/>
+
+
+
+{{--                                    <img class="mt-6 mb-3 w-24 h-24 rounded-full shadow-lg"--}}
+{{--                                         src="{{$icon}}"--}}
+{{--                                         alt="Ico_img"/>--}}
                                     @foreach($errors->all() as $error)
                                         <p class="text-2xl bg-red-500 rounded-full border-y-red-800 drop-shadow-lg p-2">{{$error}}</p>
                                     @endforeach

@@ -51,11 +51,12 @@ class ProfileController extends Controller
     public function storeNewCharacterToList(Request $request)
     {
 
+
         if (CharacterUser::where('character_id', '=', $request->character_id)->exists()) {
             return redirect()->back()->withErrors(['errors' => 'You already own this character']);
         }
 
-        if ($request->constelation > 7){
+        if ($request->constelation > 6){
             return redirect()->back()->withErrors(['errors' => 'Check your inputs that kind of value is not allowed']);
         }
 

@@ -25,6 +25,17 @@
 
                             </div>
 
+                            <div class="flex flex-col mt-5 pb-8">
+                                <button
+                                    class="rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
+                                    Edit
+                                </button>
+                                <button
+                                    class="rounded-full bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5">
+                                    Remove
+                                </button>
+                            </div>
+
                         </div>
                     @endif
                 </div>

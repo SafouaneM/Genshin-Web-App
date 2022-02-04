@@ -16,7 +16,7 @@
         <div class="px-4 py-4 bg-violet-300 border-2 border-violet-500 rounded-lg">
             <div class="flex flex-col items-center pb-8">
                 {{---todo temp img now need to fetch icons aswel.--}}
-                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{asset('img/mona.png')}}" alt="Ico_img"/>
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{$character->icon}}" alt="Ico_img"/>
                 <h3 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{$character->name}}</h3>
                 {{---todo I think i can make this cleaner?--}}
                 <span

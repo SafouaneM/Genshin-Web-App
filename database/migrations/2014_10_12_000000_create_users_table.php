@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('adventure_level')->nullable()->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            //todo primos
             $table->rememberToken();
             $table->timestamps();
         });
