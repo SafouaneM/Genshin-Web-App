@@ -20,11 +20,13 @@ Route::get('/', function () {
 
 //Start Profile
 //todo resource controller
-//todo prefix /profile
-Route::get('/profile', 'App\Http\Controllers\User\ProfileController@getProfileDetails')->middleware(['auth'])->name('profile');
-Route::get('/characterlist', 'App\Http\Controllers\User\ProfileController@showCharacterList')->middleware(['auth'])->name('p:character_list');
-Route::get('/characterlist/create', 'App\Http\Controllers\User\ProfileController@createNewCharacterToList')->middleware(['auth'])->name('p:create-character_list');
-Route::post('/characterlist', 'App\Http\Controllers\User\ProfileController@storeNewCharacterToList')->middleware(['auth'])->name('p:store-character_list');
+Route::prefix('profile')->group(function () {
+    Route::get('/', 'App\Http\Controllers\User\ProfileController@getProfileDetails')->middleware(['auth'])->name('profile');
+    Route::get('/characterlist', 'App\Http\Controllers\User\ProfileController@showCharacterList')->middleware(['auth'])->name('p:character_list');
+    Route::get('/characterlist/create', 'App\Http\Controllers\User\ProfileController@createNewCharacterToList')->middleware(['auth'])->name('p:create-character_list');
+    Route::post('/characterlist', 'App\Http\Controllers\User\ProfileController@storeNewCharacterToList')->middleware(['auth'])->name('p:store-character_list');
+
+});
 //End profile
 
 Route::get('/characters', 'App\Http\Controllers\Character\CharacterController@index')->name('characters');

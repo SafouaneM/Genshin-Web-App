@@ -18,7 +18,11 @@ Functionalities:
 
 - [] User can update/remove account (details)
 
-- [] User can add characters they own to their list  and keep track of how many constellations they have
+- [x] User can add characters they own to their list  and keep track of how many constellations they have
+
+- [] User can edit characters they own to their list  and keep track of how many constellations they have
+
+- [] User can remove characters they own to their list  and keep track of how many constellations they have
 
 - [X] Have a list of all the characters you own 
 
@@ -26,9 +30,9 @@ Functionalities:
 
 - [] Wish generator
 
-- [] User can look for characters
+- [] User can search for characters
 
-- [] User can filter on character traits (elements, occupation etc.)
+- [] User can filter and search on character traits (elements, occupation etc.)
 
 - [] Keep track of how many enemies you've encountered, and then have an option to check if you killed them. You can also write down if they drop good loot
 
@@ -37,8 +41,13 @@ Functionalities:
 ## Ideas?:
 ....
 
-### Bugs
+### Fixed Bugs
 Fixed the color span bug
+
+### Known bugs
+
+When selecting a character the icon does not show up.
+In the character list the correct icons do not show up.
 
 ### Technologies and tools?
 

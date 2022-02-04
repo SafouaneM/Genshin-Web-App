@@ -9,7 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-violet-300 border-b border-violet-200 ">
-
+                    <a href="{{route('p:create-character_list')}}">
+                        <button
+                            class="rounded-full bg-sky-600 hover:bg-sky-700 font-bold py-2 px-4 text-white p-6 justify-end">
+                            Add new character to collection
+                        </button>
+                    </a>
 
                     @foreach($characters as $character)
 
@@ -27,15 +32,26 @@
                                         <p class="mb-1 text-md font-medium text-gray-900 ">Owned
                                             by: {{$user->username}} </p>
 
-                                        <p class="mb-1 text-md font-medium text-gray-900 ">etc </p>
-                                        <p class="mb-1 text-md font-medium text-gray-900 ">etc </p>
+                                        <p class="mb-1 text-md font-medium text-gray-900 ">Constellation: {{$user->pivot->constelation}}</p>
+                                        <p class="mb-1 text-md font-medium text-gray-900 ">Note: {{$user->pivot->note}}</p>
 
                                     </div>
-
+                                    <div class="flex flex-col mt-5 pb-8">
+                                        <button
+                                            class="rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
+                                            Edit
+                                        </button>
+                                        <button
+                                            class="rounded-full bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5">
+                                            Remove
+                                        </button>
+                                    </div>
                                 </div>
+
                             @endif
                         @endforeach
                     @endforeach
+
 
                 </div>
             </div>

@@ -15,10 +15,12 @@ class CreateCharacterUserTable extends Migration
     {
         Schema::create('character_user', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->boolean('is_owned')->nullable()->default(false);
+            $table->string('constelation')->default(0);
+            $table->longText('note')->nullable();
             $table->foreignId('character_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
     }
 

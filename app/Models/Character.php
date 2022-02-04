@@ -39,7 +39,13 @@ class Character extends Model
     public function users()
     {
         return $this->belongsToMany(User::class)
-        ->withPivot(['is_owned']);
+            ->withTimestamps()
+            ->withPivot(['is_owned'])
+            ->withPivot(['note'])
+            ->withPivot(['constelation']);
+
+
+
     }
 
 
