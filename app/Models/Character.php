@@ -40,12 +40,10 @@ class Character extends Model
     {
         return $this->belongsToMany(User::class)
             ->withTimestamps()
+            ->withPivot(['id'])
             ->withPivot(['is_owned'])
             ->withPivot(['note'])
             ->withPivot(['constelation']);
-
-
-
     }
 
 

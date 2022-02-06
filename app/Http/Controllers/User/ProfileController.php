@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Character;
 use App\Models\CharacterUser;
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
@@ -14,25 +16,31 @@ class ProfileController extends Controller
 {
     public function getProfileDetails(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-       $user = auth()->user();
+        $user = auth()->user();
 
-        return view('user.profile', ['user' => $user] );
+        return view('user.profile', ['user' => $user]);
     }
 
     public function editProfileDetails($id)
     {
         $user = User::find($id);
 
-        return view('user.edit',['user' => $user]);
+        return view('user.edit', ['user' => $user]);
 
     }
 
-    public function updateNewProfileDetails(Request $request)
+    public function updateNewProfileDetails(Request $request, $id)
     {
+        $user = User::findOrFail($id);
 
 
+        $input = $request->all();
 
-        dd($request->all());
+        $user->fill($input)->save();
+
+        Session::flash('success', 'You have successfully edited your profile');
+
+        return redirect()->back();
     }
 
     public function removeProfileDetails()
@@ -40,21 +48,21 @@ class ProfileController extends Controller
 
     }
 
-    public function showCharacterList(Request $request)
+    public function showCharacterList(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
 
-
         $characters = Character::with('users')->get();
+
         return view('user.characters.index', ['characters' => $characters]);
     }
 
-    public function createNewCharacterToList()
+    public function createNewCharacterToList(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $characters = Character::with('users')->get();
         return view('user.characters.create', ['characters' => $characters]);
     }
 
-    public function storeNewCharacterToList(Request $request)
+    public function storeNewCharacterToList(Request $request): \Illuminate\Http\RedirectResponse
     {
 
 
@@ -62,7 +70,7 @@ class ProfileController extends Controller
             return redirect()->back()->withErrors(['errors' => 'You already own this character']);
         }
 
-        if ($request->constelation > 6){
+        if ($request->constelation > 6) {
             return redirect()->back()->withErrors(['errors' => 'Check your inputs that kind of value is not allowed']);
         }
 
@@ -78,12 +86,17 @@ class ProfileController extends Controller
 
 
         return redirect()->route('p:character_list')
-            ->with('success','Character added to your list.');
+            ->with('success', 'Character added to your list.');
 
     }
 
-    public function destroy()
+    public function removeCharacterFromList($id)
     {
 
+       $characterUser = CharacterUser::find($id);
+
+        $characterUser->delete();
+
+        return redirect()->route('p:character_list')->with('success', 'Character removed from list.');
     }
 }

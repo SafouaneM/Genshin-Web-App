@@ -11,49 +11,53 @@
                 <div class="p-6 bg-violet-300 border-b border-violet-200 ">
                     @if(auth()->user())
                         <form action="{{route('p:update-profile', [$user->id])}}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                        <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
-                            @foreach($errors->all() as $error)
-                                <p class="text-2xl bg-red-500 rounded-full border-y-red-800 drop-shadow-lg p-2">{{$error}}</p>
-                            @endforeach
-                            <div class="flex flex-col items-center pb-8">
-                                {{---todo temp img now need to implement profile picture ofc.--}}
-                                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{asset('img/mona.png')}}"
-                                     alt="Ico_img"/>
-                                <label class="mt-1 block text-gray-700 text-sm font-bold mb-2" for="constellation">
-                                    Username
-                                </label>
-                                <input
-                                    class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="constellation" type="number" name="constelation" placeholder="Constellation">
-                                <label class="mt-1 block text-gray-700 text-sm font-bold mb-2" for="constellation">
-                                    Email
-                                </label>
-                                <input
-                                    class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="constellation" type="number" name="constelation" placeholder="Constellation">
-                                <label class="mt-1 block text-gray-700 text-sm font-bold mb-2" for="constellation">
-                                    Adventure rank
-                                </label>
-                                <input
-                                    class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="constellation" type="number" name="constelation" placeholder="Constellation">
-                                <label class="mt-1 block text-gray-700 text-sm font-bold mb-2" for="constellation">
-                                    Password
-                                </label>
-                                <input
-                                    class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="constellation" type="number" name="constelation" placeholder="Constellation">
-                                <label class="mt-1 block text-gray-700 text-sm font-bold mb-2" for="constellation">
-                                    Verify Password
-                                </label>
-                                <input
-                                    class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="constellation" type="number" name="constelation" placeholder="Constellation">
-                            </div>
 
-                        </div>
+                            @csrf
+                            <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
+                                @foreach($errors->all() as $error)
+                                    <p class="text-2xl bg-red-500 rounded-full border-y-red-800 drop-shadow-lg p-2">{{$error}}</p>
+                                @endforeach
+
+                                <div class="flex flex-col items-center pb-8">
+
+                                    {{---todo temp img now need to implement profile picture ofc.--}}
+                                    <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{asset('img/mona.png')}}"
+                                         alt="Ico_img"/>
+                                    @if(Session::has('success'))
+                                        <p class="mt-5 text-2xl bg-emerald-500 rounded-full border-y-emerald-800 drop-shadow-lg p-2">
+                                            {{ Session::get('success') }}
+                                        </p>
+                                    @endif
+                                    <label class="mt-2 block text-gray-700 text-sm font-bold mb-2" for="username">
+                                        Username
+                                    </label>
+                                    <input
+                                        class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 font-bold text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        id="username" name="username" value="{{$user->username}}">
+
+                                    <label class="mt-1 block text-gray-700 text-sm font-bold mb-2" for="email">
+                                        Email
+                                    </label>
+                                    <input
+                                        class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 font-bold text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        id="email" name="email" value="{{$user->email}}">
+
+                                    <label class="mt-1 block text-gray-700 text-sm font-bold mb-2"
+                                           for="adventure_level">
+                                        Adventure Rank
+                                    </label>
+                                    <input
+                                        class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 font-bold text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        id="adventure_level" name="adventure_level" type="number" min="0" max="60"
+                                        value="{{$user->adventure_level}}">
+
+                                    <a href=""
+                                       class="mt-3 rounded-full bg-sky-600 hover:bg-sky-700 font-bold py-2 px-4 text-white justify-start ">
+                                        <button type="submit">Submit changes</button>
+                                    </a>
+                                </div>
+
+                            </div>
                         </form>
                     @endif
                 </div>

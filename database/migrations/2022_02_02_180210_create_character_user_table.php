@@ -18,8 +18,8 @@ class CreateCharacterUserTable extends Migration
             $table->boolean('is_owned')->nullable()->default(false);
             $table->string('constelation')->default(0);
             $table->longText('note')->nullable();
-            $table->foreignId('character_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('character_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

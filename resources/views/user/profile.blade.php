@@ -20,7 +20,7 @@
                                 <p class="mb-1 text-md font-medium text-gray-900 ">First Name: {{$user->first_name}}</p>
                                 <p class="mb-1 text-md font-medium text-gray-900 ">Email: {{$user->email}}</p>
                                 <p class="mb-1 text-md font-medium text-gray-900 ">Adventure
-                                    Rank: {{$user->adventure_rank}}</p>
+                                    Rank: {{$user->adventure_level}}</p>
 
 
                             </div>
