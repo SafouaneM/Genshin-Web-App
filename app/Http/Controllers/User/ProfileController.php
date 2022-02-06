@@ -19,14 +19,20 @@ class ProfileController extends Controller
         return view('user.profile', ['user' => $user] );
     }
 
-    public function editProfileDetails()
+    public function editProfileDetails($id)
     {
+        $user = User::find($id);
+
+        return view('user.edit',['user' => $user]);
 
     }
 
-    public function storeNewProfileDetails()
+    public function updateNewProfileDetails(Request $request)
     {
 
+
+
+        dd($request->all());
     }
 
     public function removeProfileDetails()
