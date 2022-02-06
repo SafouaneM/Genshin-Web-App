@@ -23,11 +23,11 @@ Functionalities:
 - [] User can remove account (details)
 
 ###Profile actions
-- [x] User can add characters they own to their list  and keep track of how many constellations they have
+- [x] User can add characters they own to their list and keep track of how many constellations they have
 
-- [] User can edit characters they own to their list  and keep track of how many constellations they have
+- [x] User can edit characters they own to their list and keep track of how many constellations they have
 
-- [] User can remove characters they own to their list  and keep track of how many constellations they have
+- [x] User can remove characters they own
 
 - [X] Have a list of all the characters you own 
 

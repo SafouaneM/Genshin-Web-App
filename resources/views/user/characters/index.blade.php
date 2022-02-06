@@ -41,7 +41,7 @@
 
                                     </div>
                                     <div class="flex flex-col mt-5 pb-8">
-                                        <a href="" class="text-center rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
+                                        <a href="{{route('p:edit-character_list', $user->pivot->id)}}" class="text-center rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
                                             Edit
                                         </a>
                                         {{---todo ugly.---}}

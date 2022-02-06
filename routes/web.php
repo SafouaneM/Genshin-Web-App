@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 //Start Profile
-//todo resource controller
 Route::prefix('profile')->group(function () {
     Route::get('/', 'App\Http\Controllers\User\ProfileController@getProfileDetails')->middleware(['auth'])->name('profile');
     Route::get('/edit/{id}', 'App\Http\Controllers\User\ProfileController@editProfileDetails')->middleware(['auth'])->name('p:edit-profile');
@@ -27,6 +26,8 @@ Route::prefix('profile')->group(function () {
     Route::get('/characterlist', 'App\Http\Controllers\User\ProfileController@showCharacterList')->middleware(['auth'])->name('p:character_list');
     Route::get('/characterlist/create', 'App\Http\Controllers\User\ProfileController@createNewCharacterToList')->middleware(['auth'])->name('p:create-character_list');
     Route::post('/characterlist', 'App\Http\Controllers\User\ProfileController@storeNewCharacterToList')->middleware(['auth'])->name('p:store-character_list');
+    Route::get('/characterlist/edit/{id}', 'App\Http\Controllers\User\ProfileController@editCharacterFromList')->middleware(['auth'])->name('p:edit-character_list');
+    Route::post('/characterlist/edit/{id}', 'App\Http\Controllers\User\ProfileController@updateCharacterFromList')->middleware(['auth'])->name('p:update-character_list');
     Route::post('/characterlist/{id}', 'App\Http\Controllers\User\ProfileController@removeCharacterFromList')->middleware(['auth'])->name('p:remove-character_list');
 
 });

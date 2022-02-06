@@ -90,12 +90,38 @@ class ProfileController extends Controller
 
     }
 
+    public function editCharacterFromList($id)
+    {
+        $characterUser = CharacterUser::find($id);
+
+        return view('user.characters.edit', ['characterUser' => $characterUser]);
+
+    }
+
+    public function updateCharacterFromList(Request $request, $id)
+    {
+
+        if ($request->constelation > 6) {
+            return redirect()->back()->withErrors(['errors' => 'Check your inputs that kind of value is not allowed']);
+        }
+
+        $characterUser = CharacterUser::findOrFail($id);
+
+
+        $input = $request->all();
+
+        $characterUser->fill($input)->save();
+
+        Session::flash('success', 'You have successfully edited your character information');
+
+        return redirect()->back();
+    }
+
     public function removeCharacterFromList($id)
     {
 
        $characterUser = CharacterUser::find($id);
-
-        $characterUser->delete();
+       $characterUser->delete();
 
         return redirect()->route('p:character_list')->with('success', 'Character removed from list.');
     }
