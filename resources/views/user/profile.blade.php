@@ -13,9 +13,15 @@
 
                         <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
                             <div class="flex flex-col items-center pb-8">
-                                {{---todo temp img now need to implement profile picture ofc.--}}
-                                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{asset('img/mona.png')}}"
-                                     alt="Ico_img"/>
+                                @if(isset($user->profile_picture))
+                                    <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
+                                         src="{{asset("storage/profile_pictures/$user->profile_picture")}}"
+                                         alt="Ico_img"/>
+                                @else
+                                    <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
+                                         src="{{asset('img/mona.png')}}"
+                                         alt="Ico_img"/>
+                                @endif
                                 <h3 class="mb-1 text-xl font-medium text-gray-900 ">Username: {{$user->username}}</h3>
                                 <p class="mb-1 text-md font-medium text-gray-900 ">First Name: {{$user->first_name}}</p>
                                 <p class="mb-1 text-md font-medium text-gray-900 ">Email: {{$user->email}}</p>

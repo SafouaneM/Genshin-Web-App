@@ -8,20 +8,24 @@ use App\Models\CharacterUser;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
 class ProfileController extends Controller
 {
-    public function getProfileDetails(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    protected function getProfileDetails(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $user = auth()->user();
+
 
         return view('user.profile', ['user' => $user]);
     }
 
-    public function editProfileDetails($id)
+    protected function editProfileDetails($id)
     {
         $user = User::find($id);
 
@@ -29,26 +33,29 @@ class ProfileController extends Controller
 
     }
 
-    public function updateNewProfileDetails(Request $request, $id)
+    protected function updateNewProfileDetails(Request $request, $id): RedirectResponse
     {
         $user = User::findOrFail($id);
 
         if ($request->hasFile('profile_picture')) {
 
+            $input = $request->except('profile_picture');
+
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                'profile_picture' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
 
-            $request->profile_picture->store('profile_pictures', 'public');
+            $request->file('profile_picture')->store('profile_pictures', 'public');
 
+            $user->profile_picture = $request->file('profile_picture')->hashName();
+            $this->deleteOldImage();
+            $user->fill($input)->save();
+
+        } else {
             $input = $request->all();
 
             $user->fill($input)->save();
-            }
-
-
-
-
+        }
 
 
         Session::flash('success', 'You have successfully edited your profile');
@@ -56,12 +63,20 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function removeProfileDetails()
+    protected function deleteOldImage(): void
+    {
+        if (auth()->user()->profile_picture) {
+            Storage::delete('/public/profile_pictures/' . auth()->user()->profile_picture);
+        }
+    }
+
+
+    protected function removeProfileDetails()
     {
 
     }
 
-    public function showCharacterList(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    protected function showCharacterList(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
 
         $characters = Character::with('users')->get();
@@ -69,13 +84,13 @@ class ProfileController extends Controller
         return view('user.characters.index', ['characters' => $characters]);
     }
 
-    public function createNewCharacterToList(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    protected function createNewCharacterToList(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $characters = Character::with('users')->get();
         return view('user.characters.create', ['characters' => $characters]);
     }
 
-    public function storeNewCharacterToList(Request $request): \Illuminate\Http\RedirectResponse
+    protected function storeNewCharacterToList(Request $request): \Illuminate\Http\RedirectResponse
     {
 
 
@@ -103,7 +118,7 @@ class ProfileController extends Controller
 
     }
 
-    public function editCharacterFromList($id)
+    protected function editCharacterFromList($id)
     {
         $characterUser = CharacterUser::find($id);
 
@@ -111,7 +126,7 @@ class ProfileController extends Controller
 
     }
 
-    public function updateCharacterFromList(Request $request, $id)
+    protected function updateCharacterFromList(Request $request, $id)
     {
 
         if ($request->constelation > 6) {
@@ -131,7 +146,7 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function removeCharacterFromList($id)
+    protected function removeCharacterFromList($id)
     {
 
         $characterUser = CharacterUser::find($id);
