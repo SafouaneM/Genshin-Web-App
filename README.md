@@ -2,7 +2,7 @@
 
 ## What am I going to build
 
-###Start up
+### Start up
 
 I want to start with something simple, let's create a couple of things;
 
@@ -15,14 +15,14 @@ After that I want to design the homepage, and display all the characters in the 
 
 Functionalities:
 
-###Auth
+### Auth
 - [X] User can make an account
 
 - [x] User can edit account (details)
 
 - [x] User can remove account (details)
 
-###Profile actions
+### Profile actions
 - [x] User can add characters they own to their list and keep track of how many constellations they have
 
 - [x] User can edit characters they own to their list and keep track of how many constellations they have
@@ -45,12 +45,12 @@ Functionalities:
 
 - [] Music player?
 
-###Locations
+### Locations
 
 - [] User can travel between different locations(pages) in the world of Genshin impact
 - [] User can see the local food and certain recipes that are bound to that location
 
-###Search
+### Search
 
 - [] User can search for characters
 
