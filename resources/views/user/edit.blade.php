@@ -23,11 +23,18 @@
                                     {{---todo temp img now need to implement profile picture ofc.--}}
                                     <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{asset('img/mona.png')}}"
                                          alt="Ico_img"/>
+
                                     @if(Session::has('success'))
                                         <p class="mt-5 text-2xl bg-emerald-500 rounded-full border-y-emerald-800 drop-shadow-lg p-2">
                                             {{ Session::get('success') }}
                                         </p>
                                     @endif
+
+                                    <label class="mt-2 block text-gray-700 text-sm font-bold mb-2" for="profile_picture">
+                                        Profile Picture
+                                    </label>
+                                    <input type="file" name="profile_picture" value="{{$user->profile_picture}}" class="justify-start py-2 px-3">
+
                                     <label class="mt-2 block text-gray-700 text-sm font-bold mb-2" for="username">
                                         Username
                                     </label>

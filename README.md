@@ -31,7 +31,7 @@ Functionalities:
 
 - [X] Have a list of all the characters you own 
 
-- [] Level resource material required for each ascension for each character
+- [] See level resource material required for each ascension for each character
 
 - [] Wish generator
   - Version 1: Infinite primo's for infinite wishes (test phase)

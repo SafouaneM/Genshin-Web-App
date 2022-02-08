@@ -33,10 +33,23 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id);
 
+        if ($request->hasFile('profile_picture')) {
 
-        $input = $request->all();
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
 
-        $user->fill($input)->save();
+            $request->profile_picture->store('profile_pictures', 'public');
+
+            $input = $request->all();
+
+            $user->fill($input)->save();
+            }
+
+
+
+
+
 
         Session::flash('success', 'You have successfully edited your profile');
 
@@ -112,6 +125,7 @@ class ProfileController extends Controller
 
         $characterUser->fill($input)->save();
 
+
         Session::flash('success', 'You have successfully edited your character information');
 
         return redirect()->back();
@@ -120,8 +134,8 @@ class ProfileController extends Controller
     public function removeCharacterFromList($id)
     {
 
-       $characterUser = CharacterUser::find($id);
-       $characterUser->delete();
+        $characterUser = CharacterUser::find($id);
+        $characterUser->delete();
 
         return redirect()->route('p:character_list')->with('success', 'Character removed from list.');
     }
