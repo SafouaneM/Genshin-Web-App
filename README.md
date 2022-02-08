@@ -59,6 +59,7 @@ Functionalities:
 
 ## Ideas?:
 Ui with more animations especially the locations eventually
+Layout revamp for the homepage, could look more appealing
 
 ### Known bugs
 
