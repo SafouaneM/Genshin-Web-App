@@ -54,7 +54,6 @@
                                                 Remove
                                             </button>
                                             </a>
-
                                         </form>
 
                                     </div>

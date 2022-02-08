@@ -71,8 +71,13 @@ class ProfileController extends Controller
     }
 
 
-    protected function removeProfileDetails()
+    protected function removeProfileDetails($id)
     {
+        $user = User::find($id);
+        $user->characters()->detach($user->user_id);
+        $user->delete();
+
+        return redirect()->back();
 
     }
 
@@ -93,10 +98,10 @@ class ProfileController extends Controller
     protected function storeNewCharacterToList(Request $request): \Illuminate\Http\RedirectResponse
     {
 
-
-        if (CharacterUser::where('character_id', '=', $request->character_id)->exists()) {
-            return redirect()->back()->withErrors(['errors' => 'You already own this character']);
-        }
+        //todo fix query so you can't have multiple of the same characters
+//        if () {
+//            return redirect()->back()->withErrors(['errors' => 'You already own this character']);
+//        }
 
         if ($request->constelation > 6) {
             return redirect()->back()->withErrors(['errors' => 'Check your inputs that kind of value is not allowed']);

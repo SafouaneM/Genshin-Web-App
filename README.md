@@ -20,7 +20,7 @@ Functionalities:
 
 - [x] User can edit account (details)
 
-- [] User can remove account (details)
+- [x] User can remove account (details)
 
 ###Profile actions
 - [x] User can add characters they own to their list and keep track of how many constellations they have
