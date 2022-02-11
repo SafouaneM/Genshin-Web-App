@@ -98,8 +98,11 @@ class ProfileController extends Controller
     protected function storeNewCharacterToList(Request $request): \Illuminate\Http\RedirectResponse
     {
 
-        //todo fix query so you can't have multiple of the same characters
-//        if () {
+        if ($request->user()->characters()->find($request->input('character_id'))) {
+            return redirect()->back()->withErrors(['errors' => 'You already own this character']);
+        }
+
+//        if (dd(CharacterUser::where('is_owned', true)->where('character_id', '=', $request->character_id)->toSql())) {
 //            return redirect()->back()->withErrors(['errors' => 'You already own this character']);
 //        }
 

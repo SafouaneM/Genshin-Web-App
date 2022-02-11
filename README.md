@@ -15,14 +15,14 @@ After that I want to design the homepage, and display all the characters in the 
 
 Functionalities:
 
-###Auth
+### Auth
 - [X] User can make an account
 
 - [x] User can edit account (details)
 
 - [x] User can remove account (details)
 
-###Profile actions
+### Profile actions
 - [x] User can add characters they own to their list and keep track of how many constellations they have
 
 - [x] User can edit characters they own to their list and keep track of how many constellations they have
@@ -45,12 +45,12 @@ Functionalities:
 
 - [] Music player?
 
-###Locations
+### Locations
 
 - [] User can travel between different locations(pages) in the world of Genshin impact
 - [] User can see the local food and certain recipes that are bound to that location
 
-###Search
+### Search
 
 - [] User can search for characters
 
@@ -61,7 +61,7 @@ Functionalities:
 Ui with more animations especially the locations eventually
 Layout revamp for the homepage, could look more appealing
 
-### Known bugs
+###Known bugs
 
 When selecting a character the icon does not show up.
 In the character list some icons do not show up.
