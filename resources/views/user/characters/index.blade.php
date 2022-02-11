@@ -20,8 +20,8 @@
 
                         @foreach($character->users as $user)
 
-                            @if(isset ($user->pivot->is_owned))
-                                <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
+                            @if($user->pivot->is_owned && $user->pivot->user_id === auth()->user()->id)
+                            <div class="grid gap-8 space-x-5 lg:grid-cols-2 p-12 px-10">
                                     <div class="flex flex-col items-center pb-8">
                                         {{---todo temp img now need to implement profile picture ofc.--}}
 
@@ -41,14 +41,21 @@
 
                                     </div>
                                     <div class="flex flex-col mt-5 pb-8">
-                                        <button
-                                            class="rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
+                                        <a href="{{route('p:edit-character_list', $user->pivot->id)}}" class="text-center rounded-full bg-emerald-600 hover:bg-emerald-700 font-bold py-2 px-4">
                                             Edit
-                                        </button>
-                                        <button
-                                            class="rounded-full bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5">
-                                            Remove
-                                        </button>
+                                        </a>
+                                        {{---todo ugly.---}}
+                                        <form action="{{route('p:remove-character_list', $user->pivot->id)}}" class="rounded-full font-bold  bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5 text-center" method="POST">
+                                            @csrf
+                                            <a href="" class="rounded-full font-bold  bg-rose-500 hover:bg-rose-700 font-bold py-2 px-4 mt-5 text-center">
+                                            <button
+                                                type="submit"
+                                                class="">
+                                                Remove
+                                            </button>
+                                            </a>
+                                        </form>
+
                                     </div>
                                 </div>
 
