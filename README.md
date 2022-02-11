@@ -2,7 +2,7 @@
 
 ## What am I going to build
 
-###Start up
+### Start up
 
 I want to start with something simple, let's create a couple of things;
 
