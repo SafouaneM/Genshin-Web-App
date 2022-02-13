@@ -1,5 +1,13 @@
 # Genshin web app
 
+## Installing
+
+1. Clone the master repository
+2. Npm install
+3. Php artisan serve
+4. npm run dev/watch
+
+
 ## What am I going to build
 
 ### Start up

@@ -8,16 +8,36 @@ module.exports = {
     ],
 
     theme: {
+        listStyleType: {
+            roman: 'upper-roman',
+        },
         extend: {
-            //todo check in photoshop rq
-            backgroundImage: theme => ({
-                'main-bg': "url('/img/Genshin_App_Background.png')"
-            }),
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            backgroundImage: {
+                'main-bg': "url('/img/mondstadt_bg.jpeg')",
+
+            },
+
+            keyframes: {
+                'fade-in-down': {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(-10px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    },
+                },
+            },
+                fontFamily: {
+                    sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                    roboto: ['Roboto']
+                },
+                animation: {
+                    'fade-in-down': 'fade-in-down 2.5s ease-out',
+                }
             },
         },
-    },
 
-    plugins: [require('@tailwindcss/forms')],
-};
+        plugins: [require('@tailwindcss/forms')],
+    };
