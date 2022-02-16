@@ -39,15 +39,19 @@ Functionalities:
 
 - [X] Have a list of all the characters you own 
 
+- [] All weapons
+
 - [] See level resource material required for each ascension for each character
+
 
 - [] Wish generator
   - Version 1: Infinite primo's for infinite wishes (test phase)
   - Version 2:
-
+    ### Rewards
     - You get primo's for completing "tasks", for example 10 primos for having 5 characters in your character list.
     - You get primo's for declaring that you defeated a certain amount of enemies.
     - Adventure rank 5,10,15,20,25,30,... you get +10 primos
+
 
 - [] Keep track of how many enemies you've encountered, and then have an option to check if you killed them. You can also write down if they drop good loot
 

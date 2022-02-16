@@ -17,7 +17,6 @@
             <div class="mt-12 px-4 py-4 bg-violet-300 border-2 border-violet-400 rounded-lg">
                 <div class="flex flex-col items-center pb-8">
 
-
                     <img class="mb-3 w-24 h-24 rounded-full  shadow-lg" src="{{$character->icon}}" alt="Ico_img"/>
 
 

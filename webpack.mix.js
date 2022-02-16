@@ -11,8 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/loader.js', 'public/js')
+    mix.js(['resources/js/app.js',
+                  'resources/js/home/muteButton.js', 'resources/js/home/loader.js'],
+                  'public/js')
     .postCss('resources/css/app.css', 'public/css', [
     require('postcss-import'),
     require('tailwindcss'),

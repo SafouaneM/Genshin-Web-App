@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null                                 $outfits
  * @property string|null                                 $icon
  * @property string|null                                 $portrait
+ * @property string|null                                 $gachaCard
  *
  **/
 

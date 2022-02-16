@@ -30,6 +30,7 @@ class CreateCharactersTable extends Migration
             $table->longText('outfits')->nullable();
             $table->string('icon')->nullable();
             $table->string('portrait')->nullable();
+            $table->string('gachaCard')->nullable();
             $table->timestamps();
         });
     }

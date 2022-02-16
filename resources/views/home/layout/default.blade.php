@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://pagecdn.io/lib/font-awesome/5.10.0-11/css/all.min.css" integrity="sha256-p9TTWD+813MlLaxMXMbTA7wN/ArzGyW/L7c5+KkjOkM=" crossorigin="anonymous">
     <title>Home</title>
     <style>
+        /*do this in the div pls*/
         #loader {
             justify-content: center;
             align-items: center;
@@ -26,7 +27,7 @@
     </style>
 
 </head>
-<body class="bg-[#313765] bg-no-repeat bg-contain" onload="removeLoader()">
+<body class="bg-[#313765] bg-no-repeat bg-contain py-10" onload="removeLoader()">
 <div id="loader"><span class="text-green-500 " style="
     top: 50%; ">
 
@@ -35,26 +36,13 @@
 
 {{---todo find out why mix doesn't like my custom function (this is not the way i know but whatever for now :shrug:)---}}
 
-<script>
-    function removeLoader(){
-
-        setTimeout(()=>{
-                let loader = document.getElementById('loader');
-
-                // hide the loader
-                loader.style = 'display: none;';
-            },
-            500);
-    }
-</script>
-
-
-<nav class="flex flex-row md:w-12/12 justify-between bg-[#4c5493] text-white p-5 sticky top-0 z-50">
+<nav class="flex flex-row md:w-12/12 justify-between bg-[#4c5493] text-white p-7 top-0 fixed inset-x-0 z-50 animate-fade-in-down">
 
     <div class="px-10"> <a href="/"> <span class="font-roboto text-2xl">Gensh.app</span> </a>
 {{--        Todo! I got to figure out how I can autoplay the audio tag and make it able so that the user can mute/unmute--}}
-        <button class="pl-3"><i class="text-xl fas fa-volume-mute "></i></button>
-            </div>
+        <button class="pl-3" id="mute"><i class="text-xl fas fa-volume-mute "></i></button>
+    </div>
+
     <div class="flex flex-row">
         <a href="{{route('characters')}}"><button class="mx-2 bg-amber-400 hover:bg-amber-600 rounded-lg px-5 ">Characters</button></a>
         <span class="mx-2">Enemies(wip)</span>
@@ -79,6 +67,37 @@
 
 
 </main>
+<video controls muted autoplay loop src="{{asset('storage/music/Legend of the Wind.mp3')}}" class="invisible" id="audio_play"></video>
+
+{{--todo please forgive me still gotta look why mix doesn't compile my custom functions --}}
+<script>
+    function removeLoader(){
+
+        setTimeout(()=>{
+                let loader = document.getElementById('loader');
+
+                // hide the loader
+                loader.style = 'display: none;';
+            },
+            500);
+    }
+
+        const video = document.getElementById('audio_play')
+        const button = document.getElementById('mute')
+        button.onclick = function (){
+            if (video.muted) {
+                video.muted = false;
+                console.log("videp is muted")
+            }
+            else {
+                video.muted = true;
+                console.log("video is unmuted")
+
+            }
+    }
+
+
+</script>
 </body>
 </html>
 

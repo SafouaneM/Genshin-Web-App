@@ -5514,6 +5514,45 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/home/loader.js":
+/*!*************************************!*\
+  !*** ./resources/js/home/loader.js ***!
+  \*************************************/
+/***/ (() => {
+
+function removeLoader() {
+  setTimeout(function () {
+    var loader = document.getElementById('loader'); // hide the loader
+
+    loader.style = 'display: none;';
+  }, 500);
+}
+
+/***/ }),
+
+/***/ "./resources/js/home/muteButton.js":
+/*!*****************************************!*\
+  !*** ./resources/js/home/muteButton.js ***!
+  \*****************************************/
+/***/ (() => {
+
+function muteButton() {
+  var video = document.getElementById('audio_play');
+  var button = document.getElementById('mute');
+
+  button.onclick = function () {
+    if (video.muted) {
+      video.muted = false;
+      console.log("videp is muted");
+    } else {
+      video.muted = true;
+      console.log("video is unmuted");
+    }
+  };
+}
+
+/***/ }),
+
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
@@ -23118,6 +23157,8 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/home/muteButton.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/home/loader.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
