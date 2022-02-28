@@ -5,11 +5,11 @@ function muteButton() {
     button.onclick = function (){
         if (video.muted) {
             video.muted = false;
-            console.log("videp is muted")
+            console.log("videp is unmuted")
         }
         else {
             video.muted = true;
-            console.log("video is unmuted")
+            console.log("video is muted")
 
         }
     }

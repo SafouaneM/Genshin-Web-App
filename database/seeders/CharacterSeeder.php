@@ -1,9 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Character\Character;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use App\Models\Character;
 
 class CharacterSeeder extends Seeder
 {

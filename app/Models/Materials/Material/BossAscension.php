@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Materials\Material;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class CharacterUser extends Pivot
+class BossAscension extends Model
 {
     use HasFactory;
 }

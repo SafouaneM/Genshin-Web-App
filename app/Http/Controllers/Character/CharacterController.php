@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Character;
 
-use function view;
-use App\Models\Character;
 use App\Http\Controllers\Controller;
+use App\Models\Character\Character;
 use Illuminate\Support\Facades\Http;
+use function view;
 
 
 class CharacterController extends Controller

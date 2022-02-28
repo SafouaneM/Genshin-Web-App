@@ -24,6 +24,12 @@
             z-index: 99999;
             background: #4b3588
         }
+
+        #table_custom:nth-child(even) {
+            background: #f3f2f2;
+        }
+
+
     </style>
 
 </head>
@@ -45,7 +51,8 @@
 
     <div class="flex flex-row">
         <a href="{{route('characters')}}"><button class="mx-2 bg-amber-400 hover:bg-amber-600 rounded-lg px-5 ">Characters</button></a>
-        <span class="mx-2">Enemies(wip)</span>
+        <a href="{{route('materials')}}"><button class="mx-2 bg-violet-400 hover:bg-violet-600 rounded-lg px-5 ">Materials</button></a>
+{{--        <span class="mx-2">Enemies(wip)</span>--}}
         @if (Route::has('login'))
             @auth
                 <a href="{{url('/profile')}}"><button class="mx-2 bg-emerald-400 hover:bg-amber-600 rounded-lg px-5">Profile</button></a>

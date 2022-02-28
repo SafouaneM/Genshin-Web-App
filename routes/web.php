@@ -30,12 +30,14 @@ Route::prefix('profile')->group(function () {
     Route::get('/characterlist/edit/{id}', 'App\Http\Controllers\User\ProfileController@editCharacterFromList')->middleware(['auth'])->name('p:edit-character_list');
     Route::post('/characterlist/edit/{id}', 'App\Http\Controllers\User\ProfileController@updateCharacterFromList')->middleware(['auth'])->name('p:update-character_list');
     Route::post('/characterlist/{id}', 'App\Http\Controllers\User\ProfileController@removeCharacterFromList')->middleware(['auth'])->name('p:remove-character_list');
-
 });
 //End profile
 
 Route::get('/characters', 'App\Http\Controllers\Character\CharacterController@index')->name('characters');
 Route::get('/characters/{id}', 'App\Http\Controllers\Character\CharacterController@showInvidualCharacter');
+
+Route::get('/materials', 'App\Http\Controllers\Material\CharacterController@index')->name('materials');
+
 
 
 //todo auth prefix only admin is able to fetch (i SHOULD 1000000% remove this later on and just keep it as a cmd only)
