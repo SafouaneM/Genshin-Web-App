@@ -15,6 +15,18 @@ class CreateMaterialsTable extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('material_boss_ascension_id')->constrained('material_boss_ascension')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('material_common_ascension_id')->constrained('material_common_ascension')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('material_nation_ascension_id')->constrained('material_nation_ascension')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('material_character_ascension_id')->constrained('material_character_ascension')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

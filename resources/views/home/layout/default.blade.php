@@ -46,7 +46,7 @@
 
     <div class="px-10"> <a href="/"> <span class="font-roboto text-2xl">Gensh.app</span> </a>
 {{--        Todo! I got to figure out how I can autoplay the audio tag and make it able so that the user can mute/unmute--}}
-        <button class="pl-3" id="mute"><i class="text-xl fas fa-volume-mute "></i></button>
+        <button class="pl-3" id="mute"><i class="text-xl fas fa-volume-mute "></i>mute</button>
     </div>
 
     <div class="flex flex-row">
