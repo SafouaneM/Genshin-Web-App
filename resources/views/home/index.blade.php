@@ -9,11 +9,12 @@
 
 @section('content')
     {{---todo grid here---}}
+
     <div style="background-image: url({{asset('storage/image/opacity_mondstadt.png')}})"
          class="bg-main-bg bg-gradient-to-r from-cyan-500 to-blue-500 bg-fixed object-fill">
         <div class="grid grid-cols-2 p-5 mt-3 rounded-lg">
-            <div class="mt-12 text-lg font-bold text-center p-12 rounded-lg row-span-4">
-                <img src="{{asset('storage/image/content.png')}}" class="scale-125 pt-10" alt="">
+            <div class="mt-12 text-lg font-bold text-center p-12 rounded-lg row-span-2">
+                <img src="{{asset('storage/image/content.png')}}" class="scale-125 pt-8" alt="">
             </div>
 
             <div

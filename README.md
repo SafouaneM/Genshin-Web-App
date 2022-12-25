@@ -41,10 +41,12 @@ Functionalities:
 
 - [] All weapons
 
+- [] All artifacts
+
 - [] See level resource material required for each ascension for each character
 
 
-- [] Wish generator
+- [] ~~Wish generator~~
   - Version 1: Infinite primo's for infinite wishes (test phase)
   - Version 2:
     ### Rewards
@@ -71,20 +73,26 @@ Functionalities:
 
 ## Ideas?:
 Ui with more animations especially the locations eventually
-Layout revamp for the homepage, could look more appealing
+Layout revamp for the homepage, could look more appealing.
 
-###Known bugs
+Code overhaul as I haven't touched this for a while..
+
+### Known bugs and complaints by users
 
 When selecting a character the icon does not show up.
+
 In the character list some icons do not show up.
+
+Select box too crowded needs to be replaced with a search autofill component
+
+Rather have a dashboard with a sidebar instead of a navbar
 
 ### Technologies and tools?
 
 https://github.com/SafouaneM/Genshin-Web-App
 
-Genshin api
+Genshin.dev
 Laravel
-REST
 GIT
 
 

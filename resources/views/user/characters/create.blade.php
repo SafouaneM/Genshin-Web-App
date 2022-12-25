@@ -49,10 +49,9 @@
                                         class="mb-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="note" name="note" type="text" maxLength="250" placeholder="Notes if you want"></textarea>
 
-                                    <a href=""
-                                       class="rounded-full bg-sky-600 hover:bg-sky-700 font-bold py-2 px-4 text-white p-6 justify-end">
-                                        <button type="submit">Add Character</button>
-                                    </a>
+
+                                        <button class="rounded-full bg-sky-600 hover:bg-sky-700 font-bold py-2 px-4 text-white p-6 justify-end" type="submit">Add Character</button>
+
                                 </form>
                             </div>
 

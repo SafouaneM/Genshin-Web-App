@@ -665,14 +665,11 @@ select {
 .col-start-2 {
   grid-column-start: 2;
 }
-.row-span-4 {
-  grid-row: span 4 / span 4;
+.row-span-2 {
+  grid-row: span 2 / span 2;
 }
 .row-span-1 {
   grid-row: span 1 / span 1;
-}
-.row-span-2 {
-  grid-row: span 2 / span 2;
 }
 .m-auto {
   margin: auto;
@@ -1301,9 +1298,6 @@ select {
 }
 .pt-1 {
   padding-top: 0.25rem;
-}
-.pt-10 {
-  padding-top: 2.5rem;
 }
 .pl-3 {
   padding-left: 0.75rem;

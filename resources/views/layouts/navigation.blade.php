@@ -22,10 +22,13 @@
                         {{ __('Profile') }}
                     </x-nav-link>
                     <x-nav-link :href="route('profile')" :active="request()->routeIs('profile')">
-                        {{ __('Wish generator') }}
+                        {{ __('My Weapons') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('profile')" :active="request()->routeIs('profile')">
+                        {{ __('My Artifacts') }}
                     </x-nav-link>
                     <x-nav-link :href="route('p:character_list')" :active="request()->routeIs('p:character_list')">
-                        {{ __('Your characters') }}
+                        {{ __('My characters') }}
                     </x-nav-link>
                 </div>
             </div>

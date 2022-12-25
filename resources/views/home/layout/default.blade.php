@@ -31,7 +31,7 @@
 
 
     </style>
-
+M
 </head>
 <body class="bg-[#313765] bg-no-repeat bg-contain py-10" onload="removeLoader()">
 <div id="loader"><span class="text-green-500 " style="

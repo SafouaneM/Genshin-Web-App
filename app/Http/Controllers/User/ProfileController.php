@@ -79,9 +79,7 @@ class ProfileController extends Controller
 
     protected function showCharacterList(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-
         $characters = Character::with('users')->get();
-
         return view('user.characters.index', ['characters' => $characters]);
     }
 
@@ -98,27 +96,24 @@ class ProfileController extends Controller
             return redirect()->back()->withErrors(['errors' => 'You already own this character']);
         }
 
-//        if (dd(CharacterUser::where('is_owned', true)->where('character_id', '=', $request->character_id)->toSql())) {
-//            return redirect()->back()->withErrors(['errors' => 'You already own this character']);
-//        }
-
         if ($request->constelation > 6) {
             return redirect()->back()->withErrors(['errors' => 'Check your inputs that kind of value is not allowed']);
         }
+//takes so long to load
 
 
-        CharacterUser::create( //connect character to user that pressed on submit button
-            [
-                'is_owned' => 1,
-                'character_id' => $request->character_id,
-                'user_id' => auth()->user()->id,
-                'constelation' => $request->constelation,
-                'note' => $request->note,
-            ]);
+            CharacterUser::create( //connect character to user that pressed on submit button
+                [
+                    'is_owned' => 1,
+                    'character_id' => $request->character_id,
+                    'user_id' => auth()->user()->id,
+                    'constelation' => $request->constelation,
+                    'note' => $request->note,
+                ]);
 
 
-        return redirect()->route('p:character_list')
-            ->with('success', 'Character added to your list.');
+        return redirect()->route('p:character_list');
+
 
     }
 
